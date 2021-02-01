@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Popper JS -->  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+  <link href="index.css" rel="stylesheet">
+  <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;
+      animation:chartjs-render-animation 0.001s;}
+    </style>
+<!-- //----------------------------------------------- -->
+    <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script data-require="bootstrap@*" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+</head>
+<body>
+  <div id="app">
+
+    <div data-v-69a7b5f0="" class="start d-flex align-items-center">
+      <div data-v-69a7b5f0="" class="card w-50 text-center py-4 mx-auto">
+        
+         <img style="margin: auto;" src="pic for game\swap.gif" id="moonswap" >
+        <h1 data-v-69a7b5f0="">Coin Game</h1>  
+        จำนวนเงินเป้าหมาย  {{goal}}  <br>
+       <div class="row">
+        <div class="col-sm-6"><img data-v-69a7b5f0="" src="pic for game\player.png" alt="" class="img-fluid" width="100">
+          <div class="d-flex justify-content-center" >
+                <div v-if="player" class="player">
+                  <a><img src="pic for game\1.jpg" id="moon" @click="addMoney(1)" :disabled="currentmoney+1>goal"> </img></a>
+                  <a><img src="pic for game\2.jpg" id="moon" @click="addMoney(2)" :disabled="currentmoney+2>goal"> </img></a>
+                  <a><img src="pic for game\5.jpg" id="moon" @click="addMoney(5)" :disabled="currentmoney+5>goal"> </img></a>
+              </div>  
+            </div>
+
+          
+        </div>
+        <div class="col-sm-6"> <img data-v-69a7b5f0="" src="pic for game\robot.png" alt="" class="img-fluid" width="100"><br><br>
+          จำนวนเงินที่ AI เติม  {{aimoney}}<br>
+        </div>
+      </div> 
+
+             
+              จำนวนเงินในกล่อง  {{currentmoney}}<br>  <br><br><br>     
+              
+             
+        <div v-if="goal==currentmoney">
+                  <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">    
+                                <h4 class="modal-title" id="myModalLabel">ผลลัพธ์</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>เกมจบ ผู้ชนะคือ {{ (!player)? "มนุษย์" : "AI" }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-ok" href="page1.html" data-dismiss="modal">OK</button> 
+                                <!-- <button type="button" class="btn btn-danger btn-ok">Delete</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <h3>จบเกม</h3>
+                <a href="#" data-record-id="23" data-record-title="The first one" data-toggle="modal" data-target="#confirm-delete">
+                    แสดงผลผู้ชนะ
+                </a>
+        
+                <script>
+                    $('#confirm-delete').on('click', '.btn-ok', function(e) {
+                        var $modalDiv = $(e.delegateTarget);
+                        var id = $(this).data('recordId');
+                      
+                        $modalDiv.addClass('loading');
+                        setTimeout(function() {
+                            $modalDiv.modal('hide').removeClass('loading');
+                        }, 1000)
+                    });
+                    $('#confirm-delete').on('show.bs.modal', function(e) {
+                        var data = $(e.relatedTarget).data();
+                        $('.title', this).text(data.recordTitle);
+                        $('.btn-ok', this).data('recordId', data.recordId);
+                    });
+                </script>
+        
+        </div>
+        
+        
+
+
+
+
+        <div v-if="!player">
+            <{v-btn @click="}AIAddMoney()">AI เติม </> 
+            <div id="AIAddMoney">{{ AIAddMoney() }}</div>
+        </div> 
+
+      
+
+      <div data-v-69a7b5f0="" id="btn-container" class="w-50 mx-auto" style="margin-top: 5%;">
+        <a  href="page1.html" >
+        <button data-v-69a7b5f0=""  class="action-button animate green w-100 mb-3">
+          restart
+        </button> </a>
+        <a data-v-69a7b5f0="" href="index.html" class="">
+          <button data-v-69a7b5f0="" class="action-button animate blue w-100">
+          back
+        </button>
+      </a>
+     </div>
+     
+    
+    </div>
+    
+
+
+<!-- 
+        <div id="app">
+          <v-app>
+                
+          </v-app>
+        </div> -->       
+<!-- 
+        <div id="app">
+          <v-app>
+            <v-main>
+               <v-container>        
+                <!--<template>
+                  <div id="app" >  -->
+                  
+                    
+                  
+              <!-- </div>  
+              </template>
+
+
+           <b-container class="bv-example-row">
+                <div v-if="player">
+                    <img src="pic for game\1.jpg" id="moon" @click="addMoney(1)" :disabled="currentmoney+1>goal"> </img>
+                    <img src="pic for game\2.jpg" id="moon" @click="addMoney(2)" :disabled="currentmoney+2>goal"> </img>
+                    <img src="pic for game\5.jpg" id="moon" @click="addMoney(5)" :disabled="currentmoney+5>goal"> </img>
+                </div>  
+
+            <b-row>
+              <b-col>
+                <img data-v-69a7b5f0="" src="pic for game\player.png" alt="" class="img-fluid" width="100">
+              </b-col>
+              <b-col>
+                <img data-v-69a7b5f0="" src="pic for game\robot.png" alt="" class="img-fluid" width="100">
+              </b-col>
+            </b-row>
+          </b-container>
+
+                จำนวนเงินเป้าหมาย  {{goal}}  <br>
+                จำนวนเงินในกล่อง  {{currentmoney}}<br>          
+                จำนวนเงินที่ AI เติม  {{aimoney}}<br>
+           <div v-if="goal==currentmoney">
+              เกมจบ ผู้ชนะคือ {{ (!player)? "มนุษย์" : "AI" }}
+           </div>
+          
+          <div v-if="!player">
+              <!-- <{v-btn @click="}AIAddMoney()">AI เติม </> 
+              <div id="AIAddMoney">{{ AIAddMoney() }}</div>
+          </div> 
+  
+              </v-container>
+            </v-main>
+          </v-app>
+        </div>  -->
+      <!-- ----------------------------------------------------------------------------------------- -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+        
+        <script>
+          
+          var scoreTree = new Map();
+          function minimax(money,goal,depth,maxmode){  
+              var key=money+"-"+maxmode;
+              if(scoreTree.has(key)){
+                  return scoreTree.get(key);
+              }
+              if(money==goal){
+                 if(maxmode) return {"score":-1000+depth};
+                 else return {"score":1000-depth}; 
+              }
+            var r={};  
+            if(maxmode){   
+              //MAX  
+              var score = -10000;
+              var w=0;
+              for(const x of [1,2,5]){
+                 if(money+x<=goal){ 
+                    var s = minimax(money+x, goal, depth+1, !maxmode); 
+      //              if(depth==0)
+      //                console.log(x, s, maxmode);
+                    if(s.score>score){
+                       w=x; 
+                       score = s.score; 
+                    }
+                 }
+              } 
+              r={"score":score,"money":w};       
+            }else{
+              // MIN   
+              var score = 10000;
+              var w=0;
+              for(const x of [1,2,5]){
+                 if(money+x<=goal){ 
+                    s = minimax(money+x, goal, depth+1, !maxmode); 
+                    if(s.score<score){
+                       score = s.score; 
+                       w=x;
+                    }
+                 }
+              } 
+              r = {"score":score,"money":w};  
+            }
+            scoreTree.set(key,r);
+            return r;  
+          }
+      
+          //var result = minimax(0,10,0,true);
+      
+          new Vue({       
+            el: '#app',
+            vuetify: new Vuetify(),
+            data :{
+              goal : 10,
+              currentmoney:0,
+              aimoney :0,
+              player  :true,
+            },
+            methods :{
+              addMoney(x){
+                if(x+this.currentmoney <= this.goal){
+                   this.currentmoney += x;  
+                   this.player = false;
+                }
+              },
+              AIAddMoney(){
+                 scoreTree.clear();
+                 setTimeout(this.AIAddMoney, 8000000);
+                 var solution = minimax(this.currentmoney,this.goal,0,true);
+                 this.aimoney = solution.money;
+                 this.currentmoney += this.aimoney;    
+                 this.player = true;
+              }
+            }
+          })
+          $(function(){
+            var delayID=null;
+            $("#AIAddMoney").on("keyup",function(event){
+                if(delayID){ clearTimeout(delayID);} 
+                delayID=setTimeout(function(){
+                    var input_data=$("#AIAddMoney").val();
+                    console.log(input_data); // ทำคำสั่งที่ต้องการ
+                    delayID=null;
+                },3000);                        
+            });
+        });
+        </script>
+      </div></div> </div>  
+        <script type="text/javascript" src="/static/js/manifest.73609aa3d86d743a9add.js">
+        </script><script type="text/javascript" src="/static/js/vendor.9ecb450b3c07d233a8b6.js">
+        </script><script type="text/javascript" src="/static/js/app.4e587bd9ef9cca54dc7d.js"></script>
+    
+ 
+</body>
+</html>
